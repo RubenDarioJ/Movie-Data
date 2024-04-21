@@ -1,0 +1,25 @@
+/* @import './base.css'; */
+
+body {
+  background-color: black;
+}
+
+.main {
+  background-color: #111111;
+}
+
+h1 {
+  color: #ffff;
+}
+
+h2 {
+  color: #ffff;
+  padding: 20px;
+}
+
+p {
+  color: #ffff;
+}
+.main {
+  height: 100px;
+}
