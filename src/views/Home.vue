@@ -1,20 +1,30 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import Movie from '@/types/movie.type'
+import type { Movie } from '@/types/movie.type'
 import ApiServices from '@/api/index'
-import MovieName from '@/components/MovieName.vue';
+import MovieComponent from '@/components/Movie.vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
+const date = route.query?.date ?? null
 
 const movie = ref<Movie | null>(null)
+const loading = ref<boolean>(false)
 
-ApiServices.getData().then((response) => {
-  movie.value = response.data
-  // console.log(response.data)
-})
+loading.value = true
+ApiServices.getData({ date })
+  .then((response) => {
+    movie.value = response.data
+  })
+  .finally(() => {
+    loading.value = false
+  })
+
 </script>
 <template>
   <div>
+    <MovieComponent :loading="loading" :movie="movie" />
   </div>
-  <MovieName :movie="movie" />
 </template>
 <style scoped>
 .main {

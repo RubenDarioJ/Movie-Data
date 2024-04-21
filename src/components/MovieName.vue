@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Movie from '@/types/movie.type'
+import type { Movie } from '@/types/movie.type'
 import { RouterLink } from 'vue-router'
 
 defineProps({
